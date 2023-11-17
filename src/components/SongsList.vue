@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import type { Song } from "../types";
+import type { Song } from "@/types";
 const { songs } = defineProps<{ songs: Song[] }>();
 </script>
 
 <template>
   <v-card class="mx-auto pa-2" max-width="300">
     <v-list>
-      <v-list-subheader>MUSIC PLAYER</v-list-subheader>
+      <v-list-subheader>Favorite Songs</v-list-subheader>
       <v-list-item
         v-for="(song, i) in songs"
         :key="i"
