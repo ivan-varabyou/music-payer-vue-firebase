@@ -11,9 +11,11 @@
   },
   "dependencies": {
     "firebase": "^10.6.0",
-    "vue": "^3.3.4"
+    "vue": "^3.3.4",
+    "vuetify": "^3.4.2"
   },
   "devDependencies": {
+    "@mdi/font": "^7.3.67",
     "@tsconfig/node18": "^18.2.2",
     "@types/node": "^18.18.5",
     "@vitejs/plugin-vue": "^4.4.0",
