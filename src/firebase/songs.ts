@@ -1,4 +1,11 @@
-import { collection, query, onSnapshot, addDoc } from "firebase/firestore";
+import {
+  collection,
+  query,
+  onSnapshot,
+  addDoc,
+  doc,
+  deleteDoc,
+} from "firebase/firestore";
 import { db } from "./config";
 import type { Song } from "../types";
 import type { Ref } from "vue";
@@ -22,5 +29,10 @@ export const addSong = async (song: Song) => {
     artist: song.artist,
     year: song.year,
   });
+  console.log("result", result);
+};
+
+export const deleteSongs = async (songId: string) => {
+  const result = await deleteDoc(doc(db, DB_NAME, songId));
   console.log("result", result);
 };
