@@ -5,6 +5,7 @@ import SongsPlayer from "@/components/SongsPlayer.vue";
 import type { Song } from "@/types";
 import { getSongs, addSong } from "@/firebase/songs";
 
+const isLoading = ref(false);
 const songs = ref<Song[]>([]);
 const playerSongs: Song[] = [
   { id: "1", title: "So What", artist: "Miles Davis", year: "1959" },
@@ -15,13 +16,13 @@ const addToFavorite = async (songId: string) => {
   const song = playerSongs.find((song) => song.id === songId);
   !!song && (await addSong(song));
 };
-onMounted(() => getSongs(songs));
+onMounted(() => getSongs(songs, isLoading));
 </script>
 
 <template>
   <main>
     <SongsPlayer :songs="playerSongs" @add-to-favorite="addToFavorite" />
-    <SongsList :songs="songs" />
+    <SongsList :songs="songs" :isLoading="isLoading" />
   </main>
 </template>
 

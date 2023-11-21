@@ -12,7 +12,8 @@ import type { Ref } from "vue";
 
 const DB_NAME = "songs";
 
-export const getSongs = (songs: Ref<Song[]>) => {
+export const getSongs = (songs: Ref<Song[]>, isLoading: Ref<boolean>) => {
+  isLoading.value = true;
   const q = query(collection(db, DB_NAME));
   onSnapshot(q, (querySnapshot) => {
     const tempSongs: Song[] = [];
@@ -20,6 +21,7 @@ export const getSongs = (songs: Ref<Song[]>) => {
       tempSongs.push({ id: doc.id, ...doc.data() } as Song);
     });
     songs.value = tempSongs;
+    isLoading.value = false;
   });
 };
 
